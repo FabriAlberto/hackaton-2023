@@ -1,25 +1,7 @@
-import { Grid } from "@mui/material";
+import DashboardComponent from "../components/Dashboard/DashboardComponent";
 
 const Dashboard = () => {
-  return (
-    <Grid
-      container
-      display={"flex"}
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Grid
-        item
-        md={10}
-        sx={{
-          backgroundColor: "#F2F2F2",
-          borderRadius: "8px",
-        }}
-      >
-        fasfasf
-      </Grid>
-    </Grid>
-  );
+  return <DashboardComponent />;
 };
 
 export default Dashboard;

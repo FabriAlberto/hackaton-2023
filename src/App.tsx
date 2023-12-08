@@ -1,7 +1,8 @@
 import "./App.css";
-import { Grid } from "@mui/material";
+import {ThemeProvider } from "@mui/material";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import { themeOptions } from "./themes/MuiTheme";
 
 function App() {
   const browserRouter = createBrowserRouter([
@@ -12,9 +13,11 @@ function App() {
   ]);
 
   return (
-    <Grid>
-      <RouterProvider router={browserRouter} />
-    </Grid>
+    <div>
+      <ThemeProvider theme={themeOptions}>
+        <RouterProvider router={browserRouter} />
+      </ThemeProvider>
+    </div>
   );
 }
 
