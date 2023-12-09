@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Welcome from "../Welcome/Welcome";
 import UploadFile from "../UploadFile/UploadFile";
-import { globalTheme } from "../../themes/MuiTheme";
 import ExamContent from "../ExamContent";
 
 const DashboardComponent = () => {
@@ -13,14 +12,10 @@ const DashboardComponent = () => {
     setStepperActive((stepperActive) => stepperActive + 1);
   };
 
-  const backStepp = () => {
-    setStepperActive((stepperActive) => stepperActive - 1);
-  };
-
   const MAP_STEPPERS = [
     <Welcome nextStepp={nextStepp} />,
     <UploadFile nextStepp={nextStepp} />,
-    <ExamContent />,
+    <ExamContent reloadStepper={() => setStepperActive(0)} />,
   ];
 
   return (
@@ -30,10 +25,11 @@ const DashboardComponent = () => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      height={"100vh"}
+      minHeight={"100vh"}
+      p={2}
       sx={{
         backgroundColor: "#fff",
-        backgroundImage: ` linear-gradient(0deg,${globalTheme.palette.primary.main} 0%, #fff 100%)`,
+        backgroundImage: ` linear-gradient(0deg,#97BEE2 0%, #fff 100%)`,
       }}
     >
       <motion.div

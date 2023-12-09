@@ -92,7 +92,7 @@ const UploadFile = ({ nextStepp }: Props) => {
             px={5}
             py={2}
           >
-            <Typography fontWeight={500}>Sube un archivo</Typography>
+            <Typography fontWeight={500} >Sube un archivo</Typography>
 
             <UploadFileInput
               file={file || undefined}

@@ -4,7 +4,7 @@ export const globalTheme = {
   palette: {
     mode: "light",
     primary: {
-      main: "#97BEE2",
+      main: "#2490F3",
       contrastText: "#ffffff",
     },
     secondary: {

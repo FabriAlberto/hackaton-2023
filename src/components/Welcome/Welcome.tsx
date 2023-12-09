@@ -26,16 +26,19 @@ const Welcome = ({ nextStepp }: Props) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Typography fontSize={"60px"} variant="h1" fontWeight={600}>
+        <Typography fontSize={"60px"} variant="h1" fontWeight={"light"}>
           YouKnow
+        </Typography>
+        <Typography variant="h3" fontWeight={"light"} mt={1}>
+          Valida tus conocimientos desde cualquier plataforma.
         </Typography>
         <Button
           color="primary"
           variant="contained"
           onClick={nextStepp}
-          sx={{ width: "300px", borderRadius: "10px", mt: 4 }}
+          sx={{ width: "300px", height: "60px", borderRadius: "10px", mt: 4 }}
         >
-          Empezar con un audio
+          Comenzar
         </Button>
       </Grid>
     </Grid>

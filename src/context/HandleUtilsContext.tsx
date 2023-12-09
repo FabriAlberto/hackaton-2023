@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { Exam } from "../types";
 
 interface ContextProps {
@@ -10,3 +10,7 @@ interface ContextProps {
 }
 
 export const HandleUtilsContext = createContext({} as ContextProps);
+export const useLoadingContext=()=>{
+
+  return useContext(HandleUtilsContext)
+}

@@ -14,7 +14,7 @@ const GenerateButton = ({ onClick, disabled = false }: Props) => {
     "&:hover": {
       background: `linear-gradient(0deg,${primaryColor},${uselighterColor(
         primaryColor,
-        -50
+        0
       )})`,
       boxShadow: `inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),0px 0px 0px 4px rgba(255, 255, 255, 0.2),0px 0px 180px 0px ${uselighterColor(
         primaryColor,
@@ -34,10 +34,11 @@ const GenerateButton = ({ onClick, disabled = false }: Props) => {
   return (
     <Button
       className="btn"
-      variant="outlined"
+      variant="text"
       onClick={onClick}
       sx={{
-        borderRadius: "60px",
+        borderRadius: "60px", 
+        border:"1px solid",
         transition: ".8s",
         textTransform: "none",
         width: "100%",

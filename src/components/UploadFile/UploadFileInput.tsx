@@ -26,6 +26,7 @@ const UploadFileInput = ({ handleChange, file }: Props) => {
       variant="contained"
       startIcon={<CloudUploadIcon />}
       sx={{
+        backgroundColor:"#2490F3",
         textTransform: "none",
         borderRadius: "10px",
         height: "50px",
