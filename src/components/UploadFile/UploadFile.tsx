@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import UploadFileInput from "./UploadFileInput";
-import { Grid, Card, Typography, IconButton } from "@mui/material";
+import { Grid, Card, Typography, IconButton, TextField } from "@mui/material";
 import GenerateButton from "../GenerateButton/GenerateButton";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useUtilsContext } from "../../hooks/useUtilsContext";
@@ -11,14 +11,21 @@ import { Response } from "../../services/Models/response";
 type Props = {
   nextStepp: () => void;
 };
+const regMatch =
+  /^((http|https):\/\/)?(www\.)?[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+(\/[^\s]*)?$/;
 
 const UploadFile = ({ nextStepp }: Props) => {
   const [file, setFile] = useState<File | null>(null);
+  const [url, setUrl] = useState<string>("");
   const { showSpinner, hideSpinner, handleAddExam } = useUtilsContext();
 
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     setFile(e.target.files[0]);
+  };
+
+  const handleChangeUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(e.target.value);
   };
 
   const handleDeletFile = () => {
@@ -33,7 +40,7 @@ const UploadFile = ({ nextStepp }: Props) => {
     // video alvaro
     // formData.append("url", "https://youtu.be/j-jzI3wkkVk");
     // video fabri
-    formData.append("url", "https://youtu.be/M2HaMR3H0Cg");
+    formData.append("url", url);
     // video omaly
     // formData.append("url", "https://mv.omaly.io/ocxsa7NgSznrnN5w6");
     // formData.append("file", file as File);
@@ -82,7 +89,8 @@ const UploadFile = ({ nextStepp }: Props) => {
             justifyContent={"center"}
             alignItems={"center"}
             flexDirection={"column"}
-            p={5}
+            px={5}
+            py={2}
           >
             <Typography fontWeight={500}>Sube un archivo</Typography>
 
@@ -97,22 +105,41 @@ const UploadFile = ({ nextStepp }: Props) => {
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
-            gap={1}
           >
-            {file ? (
-              <>
-                <Typography>{file.name}</Typography>
-                <IconButton onClick={handleDeletFile}>
-                  {" "}
-                  <ClearIcon />
-                </IconButton>
-              </>
-            ) : (
+            {
+              file && (
+                <>
+                  <Typography>{file.name}</Typography>
+                  <IconButton onClick={handleDeletFile}>
+                    {" "}
+                    <ClearIcon />
+                  </IconButton>
+                </>
+              ) /*  : (
               <Typography>Aún no se ha cargado ningun archivo</Typography>
-            )}
+            ) */
+            }
+          </Grid>
+          <Grid
+            item
+            md={12}
+            display={"flex"}
+            flexDirection={"column"}
+            alignItems={"center"}
+          >
+            <Typography variant="h3">o </Typography>
+
+            <TextField
+              placeholder={"ingresa el link de un video"}
+              sx={{ mt: 1 }}
+              onChange={handleChangeUrl}
+            />
           </Grid>
           <Grid item xs={12} display={"flex"} justifyContent={"center"} mt={10}>
-            <GenerateButton onClick={handleExamGenerate} />
+            <GenerateButton
+              onClick={handleExamGenerate}
+              disabled={!file && !regMatch.test(url)}
+            />
           </Grid>
         </Grid>
       </Card>
