@@ -3,13 +3,18 @@ import UploadFileInput from "./UploadFileInput";
 import { Grid, Card, Typography, IconButton } from "@mui/material";
 import GenerateButton from "../GenerateButton/GenerateButton";
 import ClearIcon from "@mui/icons-material/Clear";
+import { useUtilsContext } from "../../hooks/useUtilsContext";
+import clientAxios from "../../services/HttpService/clientAxios";
+import { Exam } from "../../types";
+import { Response } from "../../services/Models/response";
 
 type Props = {
-  handleExamGenerate: () => void;
+  nextStepp: () => void;
 };
 
-const UploadFile = ({ handleExamGenerate }: Props) => {
+const UploadFile = ({ nextStepp }: Props) => {
   const [file, setFile] = useState<File | null>(null);
+  const { showSpinner, hideSpinner, handleAddExam } = useUtilsContext();
 
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
@@ -18,6 +23,38 @@ const UploadFile = ({ handleExamGenerate }: Props) => {
 
   const handleDeletFile = () => {
     setFile(null);
+  };
+
+  const handleExamGenerate = () => {
+    showSpinner();
+    let formData = new FormData();
+    // video javi
+    // formData.append("url", "https://www.youtube.com/watch?v=Vq6h9dphulo");
+    // video alvaro
+    // formData.append("url", "https://youtu.be/j-jzI3wkkVk");
+    // video fabri
+    formData.append("url", "https://youtu.be/M2HaMR3H0Cg");
+    // video omaly
+    // formData.append("url", "https://mv.omaly.io/ocxsa7NgSznrnN5w6");
+    // formData.append("file", file as File);
+    formData.append("name", "Examen");
+    formData.append("numberOfQuestions", "4");
+    formData.append("numberOfOptions", "2");
+    formData.append("difficulty", "Dificil");
+    formData.append("multipleCorrect", "false");
+    clientAxios
+      .post<Response<Exam>>("/topics/audio", formData)
+      .then((res) => {
+        handleAddExam(res.data.data as Exam);
+      })
+      .catch((err) => {
+        console.error(err);
+        hideSpinner();
+      })
+      .finally(() => {
+        hideSpinner();
+        nextStepp();
+      });
   };
 
   return (
@@ -75,7 +112,7 @@ const UploadFile = ({ handleExamGenerate }: Props) => {
             )}
           </Grid>
           <Grid item xs={12} display={"flex"} justifyContent={"center"} mt={10}>
-            <GenerateButton disabled={!file} onClick={handleExamGenerate} />
+            <GenerateButton onClick={handleExamGenerate} />
           </Grid>
         </Grid>
       </Card>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Welcome from "../Welcome/Welcome";
 import UploadFile from "../UploadFile/UploadFile";
 import { globalTheme } from "../../themes/MuiTheme";
+import ExamContent from "../ExamContent";
 
 const DashboardComponent = () => {
   const [stepperActive, setStepperActive] = useState<number>(0);
@@ -16,15 +17,12 @@ const DashboardComponent = () => {
     setStepperActive((stepperActive) => stepperActive - 1);
   };
 
-  const handleExamGenerate = () => {
-    backStepp();
-  };
-
   const MAP_STEPPERS = [
     <Welcome nextStepp={nextStepp} />,
-    <UploadFile handleExamGenerate={handleExamGenerate} />,
+    <UploadFile nextStepp={nextStepp} />,
+    <ExamContent />,
   ];
-  
+
   return (
     <Grid
       container

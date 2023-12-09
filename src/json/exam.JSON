@@ -1,0 +1,63 @@
+{
+  "examName": "examen",
+  "numberOfQuestions": 3.8144631332215004,
+  "numberOfOptions": 3.0780554558262807,
+  "difficulty": "Dificil",
+  "questions": [
+    {
+      "question": "¿Cuál es el objetivo de una introducción?",
+      "options": [
+        {
+          "text": "Presentar el tema",
+          "correct": true
+        },
+        {
+          "text": "Explicar el contenido del texto",
+          "correct": true
+        },
+        {
+          "text": "Atrapar la atención del lector",
+          "correct": true
+        }
+      ],
+      "justification": "La introducción tiene como objetivo presentar el tema, explicar el contenido del texto y atrapar la atención del lector."
+    },
+    {
+      "question": "¿Cuál es una de las funciones de una introducción?",
+      "options": [
+        {
+          "text": "Presentar el tema",
+          "correct": true
+        },
+        {
+          "text": "Explicar el contenido del texto",
+          "correct": false
+        },
+        {
+          "text": "Atrapar la atención del lector",
+          "correct": false
+        }
+      ],
+      "justification": "Una de las funciones de una introducción es presentar el tema."
+    },
+    {
+      "question": "¿Cuál es una frase de introducción para el tema del reciclaje?",
+      "options": [
+        {
+          "text": "La investigación sobre el reciclaje es una preocupación constante dentro de...",
+          "correct": true
+        },
+        {
+          "text": "En los últimos años ha habido un interés creciente en el reciclaje.",
+          "correct": true
+        },
+        {
+          "text": "En el presente hay una pobre comprensión del reciclaje.",
+          "correct": true
+        }
+      ],
+      "justification": "Algunas frases de introducción para el tema del reciclaje son: 'La investigación sobre el reciclaje es una preocupación constante dentro de...', 'En los últimos años ha habido un interés creciente en el reciclaje.' y 'En el presente hay una pobre comprensión del reciclaje.'"
+    }
+  ],
+  "multipleCorrect": true
+}

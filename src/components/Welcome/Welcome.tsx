@@ -31,11 +31,11 @@ const Welcome = ({ nextStepp }: Props) => {
         </Typography>
         <Button
           color="primary"
-          variant="outlined"
+          variant="contained"
           onClick={nextStepp}
-          sx={{ width: "300px", height: "100px", borderRadius: "10px" }}
+          sx={{ width: "300px", borderRadius: "10px", mt: 4 }}
         >
-          Start
+          Empezar con un audio
         </Button>
       </Grid>
     </Grid>
