@@ -7,7 +7,60 @@ import { useUtilsContext } from "../../hooks/useUtilsContext";
 import clientAxios from "../../services/HttpService/clientAxios";
 import { Exam } from "../../types";
 import { Response } from "../../services/Models/response";
-
+const MOCK_EXAM = {
+  examName: "examen",
+  numberOfQuestions: 3,
+  numberOfOptions: 2,
+  difficulty: "Dificil",
+  questions: [
+    {
+      question: "¿Qué es Angular?",
+      options: [
+        {
+          text: "Una plataforma de desarrollo para crear aplicaciones web.",
+          correct: true,
+        },
+        {
+          text: "Un lenguaje de programación para crear aplicaciones móviles.",
+          correct: false,
+        },
+      ],
+      justification:
+        "Angular es una plataforma de desarrollo con la cual podemos crear aplicaciones web del tipo SPA o aplicaciones de página única.",
+    },
+    {
+      question: "¿Cuál es la función de los componentes en Angular?",
+      options: [
+        {
+          text: "Definir la parte visual de una aplicación.",
+          correct: true,
+        },
+        {
+          text: "Manejar la lógica de negocio de una aplicación.",
+          correct: false,
+        },
+      ],
+      justification:
+        "Los componentes en Angular consisten en una plantilla que es la parte visual y una clase que define la parte lógica.",
+    },
+    {
+      question: "¿Qué son los servicios en Angular?",
+      options: [
+        {
+          text: "Clases que centralizan la lógica reutilizable en una aplicación.",
+          correct: true,
+        },
+        {
+          text: "Elementos visuales de una aplicación en Angular.",
+          correct: false,
+        },
+      ],
+      justification:
+        "Los servicios en Angular son clases que podemos inyectar en cualquier otra clase y se utilizan para centralizar la lógica reutilizable en distintos lugares.",
+    },
+  ],
+  multipleCorrect: false,
+};
 type Props = {
   nextStepp: () => void;
 };
@@ -31,7 +84,15 @@ const UploadFile = ({ nextStepp }: Props) => {
   const handleDeletFile = () => {
     setFile(null);
   };
-
+  //MOCK FETCH
+ /*  const handleExamGenerate=()=>{
+    showSpinner();
+    setTimeout(()=>{
+      handleAddExam(MOCK_EXAM);
+      hideSpinner();
+      nextStepp();
+    },3000)
+  } */
   const handleExamGenerate = () => {
     showSpinner();
     let formData = new FormData();
@@ -92,7 +153,7 @@ const UploadFile = ({ nextStepp }: Props) => {
             px={5}
             py={2}
           >
-            <Typography fontWeight={500} >Sube un archivo</Typography>
+            <Typography fontWeight={500}>Sube un archivo</Typography>
 
             <UploadFileInput
               file={file || undefined}

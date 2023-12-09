@@ -8,6 +8,7 @@ type Props = {
 };
 const ExamContent = ({ reloadStepper }: Props) => {
   const { exam } = useUtilsContext();
+  console.log(exam)
   const [examFinished, setExamFinished] = useState(false);
   const { hideSpinner, showSpinner } = useLoadingContext();
   const handleExamComplete = () => {

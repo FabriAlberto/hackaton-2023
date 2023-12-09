@@ -8,7 +8,7 @@ const Welcome = ({ nextStepp }: Props) => {
   return (
     <Grid
       container
-      height={"100vh"}
+      height={"100%"}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
@@ -36,7 +36,13 @@ const Welcome = ({ nextStepp }: Props) => {
           color="primary"
           variant="contained"
           onClick={nextStepp}
-          sx={{ width: "300px", height: "60px", borderRadius: "10px", mt: 4 }}
+          sx={{
+            width: "300px",
+            height: "60px",
+            borderRadius: "10px",
+            mt: 4,
+            textTransform: "none",
+          }}
         >
           Comenzar
         </Button>
