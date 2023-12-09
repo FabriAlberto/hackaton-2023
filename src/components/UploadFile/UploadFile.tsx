@@ -7,60 +7,7 @@ import { useUtilsContext } from "../../hooks/useUtilsContext";
 import clientAxios from "../../services/HttpService/clientAxios";
 import { Exam } from "../../types";
 import { Response } from "../../services/Models/response";
-const MOCK_EXAM = {
-  examName: "examen",
-  numberOfQuestions: 3,
-  numberOfOptions: 2,
-  difficulty: "Dificil",
-  questions: [
-    {
-      question: "¿Qué es Angular?",
-      options: [
-        {
-          text: "Una plataforma de desarrollo para crear aplicaciones web.",
-          correct: true,
-        },
-        {
-          text: "Un lenguaje de programación para crear aplicaciones móviles.",
-          correct: false,
-        },
-      ],
-      justification:
-        "Angular es una plataforma de desarrollo con la cual podemos crear aplicaciones web del tipo SPA o aplicaciones de página única.",
-    },
-    {
-      question: "¿Cuál es la función de los componentes en Angular?",
-      options: [
-        {
-          text: "Definir la parte visual de una aplicación.",
-          correct: true,
-        },
-        {
-          text: "Manejar la lógica de negocio de una aplicación.",
-          correct: false,
-        },
-      ],
-      justification:
-        "Los componentes en Angular consisten en una plantilla que es la parte visual y una clase que define la parte lógica.",
-    },
-    {
-      question: "¿Qué son los servicios en Angular?",
-      options: [
-        {
-          text: "Clases que centralizan la lógica reutilizable en una aplicación.",
-          correct: true,
-        },
-        {
-          text: "Elementos visuales de una aplicación en Angular.",
-          correct: false,
-        },
-      ],
-      justification:
-        "Los servicios en Angular son clases que podemos inyectar en cualquier otra clase y se utilizan para centralizar la lógica reutilizable en distintos lugares.",
-    },
-  ],
-  multipleCorrect: false,
-};
+
 type Props = {
   nextStepp: () => void;
 };
@@ -84,32 +31,11 @@ const UploadFile = ({ nextStepp }: Props) => {
   const handleDeletFile = () => {
     setFile(null);
   };
-  //MOCK FETCH
- /*  const handleExamGenerate=()=>{
-    showSpinner();
-    setTimeout(()=>{
-      handleAddExam(MOCK_EXAM);
-      hideSpinner();
-      nextStepp();
-    },3000)
-  } */
+
   const handleExamGenerate = () => {
     showSpinner();
     let formData = new FormData();
-    // video javi
-    // formData.append("url", "https://www.youtube.com/watch?v=Vq6h9dphulo");
-    // video alvaro
-    // formData.append("url", "https://youtu.be/j-jzI3wkkVk");
-    // video fabri
     formData.append("url", url);
-    // video omaly
-    // formData.append("url", "https://mv.omaly.io/ocxsa7NgSznrnN5w6");
-    // formData.append("file", file as File);
-    formData.append("name", "Examen");
-    formData.append("numberOfQuestions", "4");
-    formData.append("numberOfOptions", "2");
-    formData.append("difficulty", "Dificil");
-    formData.append("multipleCorrect", "false");
     clientAxios
       .post<Response<Exam>>("/topics/audio", formData)
       .then((res) => {
